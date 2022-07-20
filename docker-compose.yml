@@ -13,16 +13,6 @@ services:
       - ./app.py:/usr/src/app/app.py
     command: [/usr/src/app/venv/bin/gunicorn, --bind, "0.0.0.0:5000", --log-level, debug, "app:app"]
 
-  app2:
-    container_name: app2
-    image: app
-    user: nobody
-    ports:
-      - 5555:5555
-    volumes:
-      - ./app2.py:/usr/src/app/app2.py
-    command: [/usr/src/app/venv/bin/gunicorn, --bind, "0.0.0.0:5555", --log-level, debug, "app2:app"]
-
   nginx:
     container_name: nginx
     image: nginx:mainline
